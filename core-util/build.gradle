@@ -2,6 +2,8 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.google.protobuf'
 apply plugin: 'witness'
 apply from: 'witness-verifications.gradle'
+apply from: "$rootDir/gradle/local-aar.gradle"
+apply from: "$rootDir/gradle/publish.gradle"
 
 android {
     buildToolsVersion BUILD_TOOL_VERSION

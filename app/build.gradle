@@ -8,6 +8,7 @@ apply plugin: 'androidx.navigation.safeargs'
 apply plugin: 'witness'
 apply from: 'translations.gradle'
 apply from: 'witness-verifications.gradle'
+apply from: "$rootDir/gradle/local-aar.gradle"
 
 repositories {
     maven {
@@ -330,9 +331,9 @@ dependencies {
     implementation 'org.signal:aesgcmprovider:0.0.3'
 
     implementation project(':libsignal-service')
-    implementation project(':paging')
-    implementation project(':core-util')
-    implementation project(':video')
+    implementation customModulePath(':paging')
+    implementation customModulePath(':core-util')
+    implementation customModulePath(':video')
 
     implementation 'org.signal:zkgroup-android:0.7.0'
     implementation 'org.whispersystems:signal-client-android:0.1.5'

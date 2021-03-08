@@ -1,6 +1,8 @@
 apply plugin: 'com.android.library'
 apply plugin: 'witness'
 apply from: 'witness-verifications.gradle'
+apply from: "$rootDir/gradle/local-aar.gradle"
+apply from: "$rootDir/gradle/publish.gradle"
 
 android {
     buildToolsVersion BUILD_TOOL_VERSION
@@ -17,16 +19,16 @@ android {
     }
 }
 
-dependencyVerification {
-    configuration = '(debug|release)RuntimeClasspath'
-}
+//dependencyVerification {
+//    configuration = '(debug|release)RuntimeClasspath'
+//}
 
 dependencies {
     lintChecks project(':lintchecks')
 
     api 'androidx.annotation:annotation:1.1.0'
 
-    implementation project(':core-util')
+    implementation customModulePath(':core-util')
 
     implementation 'org.mp4parser:isoparser:1.9.39'
     implementation 'org.mp4parser:streaming:1.9.39'

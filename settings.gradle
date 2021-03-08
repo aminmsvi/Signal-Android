@@ -1,14 +1,15 @@
-include ':app'
+apply from: "${rootDir}/gradle/settings-helper.gradle"
+
+includeIfEnabled ':app'
 include ':libsignal-service'
 include ':lintchecks'
-include ':paging'
-include ':paging-app'
-include ':core-util'
-include ':video'
+includeIfEnabled ':paging'
+includeIfEnabled ':paging-app'
+includeIfEnabled ':core-util'
+includeIfEnabled ':video'
 
-project(':app').name = 'Signal-Android'
-project(':paging').projectDir = file('paging/lib')
-project(':paging-app').projectDir = file('paging/app')
+projectIfEnabled(':paging')?.projectDir = file('paging/lib')
+projectIfEnabled(':paging-app')?.projectDir = file('paging/app')
 
 project(':libsignal-service').projectDir = file('libsignal/service')
 
